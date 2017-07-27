@@ -39,11 +39,19 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/greeting", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/greeting", method = RequestMethod.GET)
     @ResponseBody public String greeting() {
+        
         return "Text";
     }
     
+    @PreAuthorize(value = "denyAll")
+    @RequestMapping(value = "/api/protected", method = RequestMethod.GET)
+    @ResponseBody public String apiProtectedText() {
+        return "api Protected Text";
+    }
+    
+    @PreAuthorize(value = "denyAll")
     @RequestMapping(value = "/protected", method = RequestMethod.GET)
     @ResponseBody public String protectedText() {
         return "Protected Text";
