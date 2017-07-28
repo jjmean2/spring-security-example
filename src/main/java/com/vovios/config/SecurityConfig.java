@@ -25,7 +25,6 @@ public class SecurityConfig {
             http.antMatcher("/api/**")
                     .authorizeRequests()
                     .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()//allow CORS option calls
-                    .antMatchers("/api/protected").hasRole("COURIER")
                     .anyRequest().permitAll();
             http.exceptionHandling().authenticationEntryPoint(new AppAccessDeniedHandler());
         }
